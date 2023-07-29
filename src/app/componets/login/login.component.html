@@ -1,0 +1,21 @@
+<div>
+  <h2>Admin Login</h2>
+  <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+    <div class="input-field">
+      <label for="adminName">Admin Name</label>
+      <input formControlName="adminName" type="text" id="adminName" name="adminName" [(ngModel)]="adminName" required>
+      <small *ngIf="loginForm.controls['adminName'].dirty && loginForm.hasError('required','adminName')"class="text-danger">*required field</small>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <div class="password-input-container">
+        <input formControlName="adminPassword" type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" [(ngModel)]="adminPassword" required>
+        <span class="password-toggle-icon" (click)="togglePasswordVisibility()">
+          <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </span>
+      </div>
+      <small *ngIf="loginForm.controls['adminPassword'].dirty && loginForm.hasError('required','adminPassword')" class="text-danger">*required field</small>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
